@@ -17,8 +17,9 @@ public class POOEjercicio1 {
         Posnet posnet = new Posnet();
         Persona persona1 = new Persona("34345432", "Juan", "Matias", "76589647", "juanmatias@gmail.com");
         TarjetaDeCredito tarjeta1 = new TarjetaDeCredito(EntidadFinanciera.BIRZA, "Banco social", "0001", 15000, persona1);
-        
-        
+
+        System.out.println(posnet.efectuarPago(tarjeta1, 10000, 2));
+        System.out.println(tarjeta1);
     }
-    
+
 }

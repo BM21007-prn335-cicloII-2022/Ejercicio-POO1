@@ -14,13 +14,23 @@ public class Posnet {
     private final int MAX_CANTIDAD_DE_CUOTAS = 6;
     private final int MIN_CANTIDAD_DE_CUOTAS = 1;
 
-    public Posnet() {}
+    public Posnet() {
+    }
 
     public Ticket efectuarPago(TarjetaDeCredito tarjeta, double montoParaAbonar, int cantidadDeCuotas) {
         Ticket ticket = null;
-        
-        
-        
+        double montoTotal;
+        String nombreApellido = tarjeta.nombreCompletoPersona();
+        double montoPorCuota;
+
+        if (datosValidos(tarjeta, montoParaAbonar, cantidadDeCuotas)) {
+            montoTotal = montoParaAbonar + (montoParaAbonar * recargoSegunCantidadDeCuotas(cantidadDeCuotas));
+            if (tarjeta.tieneSaldoDisponible(montoTotal)) {
+                tarjeta.descontar(montoTotal);
+                montoPorCuota = montoTotal / cantidadDeCuotas;
+                ticket = new Ticket(nombreApellido, montoTotal, montoPorCuota);
+            }
+        }
         return ticket;
     }
 
@@ -28,7 +38,7 @@ public class Posnet {
         boolean tarjetaValida = tarjeta != null;
         boolean montoValido = montoParaAbonar > 0;
         boolean cantidadCuotasValidas = cantidadDeCuotas >= MIN_CANTIDAD_DE_CUOTAS && cantidadDeCuotas <= MAX_CANTIDAD_DE_CUOTAS;
-        
+
         return tarjetaValida && montoValido && cantidadCuotasValidas;
     }
 
