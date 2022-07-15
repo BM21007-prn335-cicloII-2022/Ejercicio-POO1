@@ -13,7 +13,12 @@ public class Ticket {
     private double montototal;
     private double montoPorCadaCuota;
 
-    
+    public Ticket(String nombreApellido, double montototal, double montoPorCadaCuota) {
+        this.nombreApellido = nombreApellido;
+        this.montototal = montototal;
+        this.montoPorCadaCuota = montoPorCadaCuota;
+    }
+
     @Override
     public String toString() {
         return "Ticket{" + "nombreApellido=" + nombreApellido + ", montototal=" + montototal + ", montoPorCadaCuota=" + montoPorCadaCuota + '}';
