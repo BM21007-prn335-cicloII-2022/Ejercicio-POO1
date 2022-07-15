@@ -14,15 +14,25 @@ public class Posnet {
     private final int MAX_CANTIDAD_DE_CUOTAS = 6;
     private final int MIN_CANTIDAD_DE_CUOTAS = 1;
 
+    public Posnet() {}
+
     public Ticket efectuarPago(TarjetaDeCredito tarjeta, double montoParaAbonar, int cantidadDeCuotas) {
-        return null;
+        Ticket ticket = null;
+        
+        
+        
+        return ticket;
     }
 
     private boolean datosValidos(TarjetaDeCredito tarjeta, double montoParaAbonar, int cantidadDeCuotas) {
-        return false;
+        boolean tarjetaValida = tarjeta != null;
+        boolean montoValido = montoParaAbonar > 0;
+        boolean cantidadCuotasValidas = cantidadDeCuotas >= MIN_CANTIDAD_DE_CUOTAS && cantidadDeCuotas <= MAX_CANTIDAD_DE_CUOTAS;
+        
+        return tarjetaValida && montoValido && cantidadCuotasValidas;
     }
 
-    private double recargoSegunCantidadDeCuotas() {
-        return 0.0;
+    private double recargoSegunCantidadDeCuotas(int cantidadDeCuotas) {
+        return (cantidadDeCuotas - 1) * RECARGO_POR_CUOTA;
     }
 }

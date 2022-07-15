@@ -13,6 +13,9 @@ public class Ticket {
     private double montototal;
     private double montoPorCadaCuota;
 
+    public Ticket() {
+    }
+    
     public Ticket(String nombreApellido, double montototal, double montoPorCadaCuota) {
         this.nombreApellido = nombreApellido;
         this.montototal = montototal;

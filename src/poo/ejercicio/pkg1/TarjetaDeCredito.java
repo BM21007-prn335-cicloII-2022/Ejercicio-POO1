@@ -16,6 +16,8 @@ public class TarjetaDeCredito {
     private double saldoDisponible;
     private Persona persona;
 
+    public TarjetaDeCredito() {}
+
     public TarjetaDeCredito(EntidadFinanciera entidadFinanciera, String entidadBancaria, String numeroDeTarjeta, double saldoDisponible, Persona persona) {
         this.entidadFinanciera = entidadFinanciera;
         this.entidadBancaria = entidadBancaria;
@@ -25,13 +27,15 @@ public class TarjetaDeCredito {
     }
 
     public boolean tieneSaldoDisponible(double montoARetirar) {
-        return false;
+        return montoARetirar <= this.saldoDisponible;
     }
     
-    public void descontar(double montoARetirar) {}
+    public void descontar(double montoARetirar) {
+        this.saldoDisponible -= montoARetirar;
+    }
     
     public String nombreCompletoPersona(){
-        return "";
+        return persona.nombreCompleto();
     }
 
     @Override
@@ -39,6 +43,4 @@ public class TarjetaDeCredito {
         return "TarjetaDeCredito{" + "entidadFinanciera=" + entidadFinanciera + ", entidadBancaria=" + entidadBancaria + ", numeroDeTarjeta=" + numeroDeTarjeta + ", saldoDisponible=" + saldoDisponible + ", persona=" + persona + '}';
     }
 
-    
-    
 }
